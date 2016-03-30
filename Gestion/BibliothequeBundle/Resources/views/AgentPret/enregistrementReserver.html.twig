@@ -1,0 +1,53 @@
+{% block contenu %}
+    <div class="well">
+        {{ form_start(formReserver, {'attr':{'id':'enregistrementReserver','class': 'form-horizontal'}}) }}
+        {# Les erreurs générales du formulaire. #}
+        {{ form_errors(formReserver) }}
+        <div class="form-group">
+            {# Génération du label. #}
+            {{ form_label(formReserver.livre, "Livre à réserver", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(formReserver.livre) }}
+
+            <div class="col-sm-4">
+                {# Génération de l'input. #}
+                {{ form_widget(formReserver.livre, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {# Génération du label. #}
+            {{ form_label(formReserver.lecteur, "Emprunteur", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(formReserver.lecteur) }}
+
+            <div class="col-sm-4">
+                {# Génération de l'input. #}
+                {{ form_widget(formReserver.lecteur, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+        </div>
+        <div class="form-group">
+            {# Génération du label. #}
+            {{ form_label(formReserver.dateReservation, "Date Réservation", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+            <div class="col-sm-4">
+                {# Génération de l'input. #}
+                {{ form_widget(formReserver.dateReservation, { 'attr': {'class': 'datepicker'}}) }}
+            </div>
+            {{ form_widget(formReserver.submit, {'attr': {'class': 'btn btn-default'}}) }}
+
+        </div>
+        {{ form_end(formReserver) }}
+    </div>
+    <script>
+        $(document).ready( function() {
+
+            //$('.datepicker').datepicker({ dateFormat: "yyyy-MM-dd" });
+
+        });
+    </script>
+
+    </script>
+{% endblock %}

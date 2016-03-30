@@ -1,0 +1,24 @@
+{% block contenu %}
+    <table class="table table bordered table striped">
+        <tr>
+            <th>Nom emprunteur</th>
+            <th>Prénom emprunteur</th>
+            <th>Livre emprunté</th>
+            <th>Exemplaire emprunté</th>
+            <th>Date sortie</th>
+            <th>Date retour</th>
+        </tr>
+        {% for exemplaire in listExemplaire  %}
+            {% for emprunt in exemplaire.emprunter %}
+                <tr>
+                    <td>{{ emprunt.emprunteur.nomLecteur }}</td>
+                    <td>{{ emprunt.emprunteur.prenomLecteur }}</td>
+                    <td>{{ emprunt.exemplaire.livre.titreLivre }}</td>
+                    <td>{{ emprunt.exemplaire.numeroExemplaire }}</td>
+                    <td>{{ emprunt.dateDebut|date("d/m/Y") }}</td>
+                    <td>{{ emprunt.dateFin|date("d/m/Y") }}</td>
+                </tr>
+            {% endfor %}
+        {% endfor %}
+    </table>
+{% endblock %}

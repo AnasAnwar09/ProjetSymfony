@@ -1,0 +1,77 @@
+{% extends "GestionBibliothequeBundle::inscritIndex.html.twig" %}
+{% block contenu %}
+    <div class="well">
+        <legend>Modifier un lecteur</legend>
+
+        {{ form_start(editForm, {'attr':{'class': 'form-horizontal'}}) }}
+        {# Les erreurs générales du formulaire. #}
+        {{ form_errors(editForm) }}
+
+        <div class="form-group">
+            {# Génération du label. #}
+            {{ form_label(editForm.nomLecteur, "Nom Lecteur", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(editForm.nomLecteur) }}
+
+            <div class="col-sm-4">
+                {# Génération de l'input. #}
+                {{ form_widget(editForm.nomLecteur, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+        </div>
+        <div class="form-group">
+            {# Génération du label. #}
+            {{ form_label(editForm.prenomLecteur, "Prenom Lecteur", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(editForm.prenomLecteur) }}
+
+            <div class="col-sm-4">
+                {# Génération de l'input. #}
+                {{ form_widget(editForm.prenomLecteur, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+
+        </div>
+        <div class="form-group">
+            {# Génération du label. #}
+            {{ form_label(editForm.cycleLecteur, "Cycle Lecteur", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(editForm.cycleLecteur) }}
+
+            <div class="col-sm-4">
+                {# Génération de l'input. #}
+                {{ form_widget(editForm.cycleLecteur, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+        </div>
+        <div class="form-group">
+            {# Génération du label. #}
+            {{ form_label(editForm.faculte, "Faculté", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(editForm.faculte) }}
+
+            <div class="col-sm-4">
+                {# Génération de l'input. #}
+                {{ form_widget(editForm.faculte, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <input type="submit" class="btn btn-default" />
+
+        </div>
+        {{ form_end(editForm) }}
+
+    </div>
+
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('lecteur') }}">
+            Retourner à la liste des lecteurs
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

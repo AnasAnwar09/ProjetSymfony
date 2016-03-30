@@ -1,0 +1,51 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Auteur list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nomauteur</th>
+                <th>Prenomauteur</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('auteur_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.nomAuteur }}</td>
+                <td>{{ entity.prenomAuteur }}</td>
+                <td>
+                <ul>
+
+                    <li>
+                        <a href="{{ path('auteur_show_details', { 'id': entity.id }) }}">showDetails</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('auteur_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+
+        <div class="alert alert-success">
+            {{ flashMessage }}
+        </div>
+
+    {% endfor %}
+        <ul>
+        <li>
+            <a href="{{ path('auteur_new') }}">
+                Create a new entry
+            </a>
+        </li>
+
+    </ul>
+    {% endblock %}

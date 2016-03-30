@@ -1,0 +1,32 @@
+Gestion\BibliothequeBundle\Entity\Emprunter:
+    type: entity
+    table: null
+    repositoryClass: Gestion\BibliothequeBundle\Entity\EmprunterRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        dateDebut:
+            type: datetime
+            column: date_debut
+        dateFin:
+            type: datetime
+            column: date_fin
+    manyToOne:
+        exemplaire:
+            targetEntity: Exemplaire
+            inversedBy: emprunter
+            joinColumn:
+                name: id_exemplaire
+                referencedColumnName: id
+                nullable: false
+        emprunteur:
+            targetEntity: Lecteur
+            inversedBy: emprunter
+            joinColumn:
+                name: id_lecteur
+                referencedColumnName: id
+                nullable: false

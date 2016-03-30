@@ -1,0 +1,25 @@
+{% block contenu %}
+
+    <table class="table table bordered table striped">
+        <tr>
+            <th>Nom emprunteur</th>
+            <th>Prénom emprunteur</th>
+            <th>Livre emprunté</th>
+            <th>Exemplaire emprunté</th>
+            <th>Date sortie</th>
+            <th>Date retour</th>
+        </tr>
+        {% for emprunter in emprunterHD %}
+            <tr>
+                <td>{{ emprunter.emprunteur.nomLecteur }}</td>
+                <td>{{ emprunter.emprunteur.prenomLecteur }}</td>
+                <td>{{ emprunter.exemplaire.livre.titreLivre }}</td>
+                <td>{{ emprunter.exemplaire.numeroExemplaire }}</td>
+                <td>{{ emprunter.dateDebut|date("d/m/Y") }}</td>
+                <td>{{ emprunter.dateFin|date("d/m/Y") }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock %}

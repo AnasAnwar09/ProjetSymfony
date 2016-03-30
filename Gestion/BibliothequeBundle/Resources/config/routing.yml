@@ -1,0 +1,121 @@
+gestion_bibliotheque_theme:
+    resource: "@GestionBibliothequeBundle/Resources/config/routing/theme.yml"
+    prefix:   /theme
+
+gestion_bibliotheque_auteur:
+    resource: "@GestionBibliothequeBundle/Resources/config/routing/auteur.yml"
+    prefix:   /auteur
+gestion_bibliotheque_livre:
+    resource: "@GestionBibliothequeBundle/Resources/config/routing/livre.yml"
+    prefix:   /livre
+
+gestion_bibliotheque_lecteur:
+    resource: "@GestionBibliothequeBundle/Resources/config/routing/lecteur.yml"
+    prefix:   /lecteur
+gestion_bibliotheque_faculte:
+    resource: "@GestionBibliothequeBundle/Resources/config/routing/faculte.yml"
+    prefix:   /faculte
+gestion_bibliotheque_homepage:
+    path:     /accueil
+    defaults: { _controller: GestionBibliothequeBundle:Default:index }
+###############################routing Minh Anh ####################################
+gestion_bibliotheque_agentpret:
+    path: /AgentPret
+    defaults: { _controller: GestionBibliothequeBundle:Pret:index }
+gestion_bibliotheque_listepret:
+    path: /AgentPret/ListePret
+    defaults: { _controller: GestionBibliothequeBundle:Pret:listePretGlobal }
+gestion_bibliotheque_trierparlecteur:
+    path: /AgentPret/ListePret/Lecteur
+    defaults: { _controller: GestionBibliothequeBundle:Pret:trierParLecteur }
+    requirements:
+        _method: POST
+gestion_bibliotheque_listerparlivre:
+    path: /AgentPret/ListePret/Livre
+    defaults: { _controller: GestionBibliothequeBundle:Pret:listerParLivre }
+    requirements:
+        _method: POST
+gestion_bibliotheque_consulterDispo:
+    path: /AgentPret/ListePret/Dispo/Livre
+    defaults: { _controller: GestionBibliothequeBundle:Pret:consulterDispo }
+gestion_bibliotheque_sortieLivre:
+    path: /AgentPret/ListePret/Sortie/Livre
+    defaults: { _controller: GestionBibliothequeBundle:Pret:SortieLivre }
+gestion_bibliotheque_enregistrerPret:
+    path: /AgentPret/ListePret/Sortie/Enregistrer/{id}/{nombreDispo}
+    defaults: { _controller: GestionBibliothequeBundle:Pret:EnregistrerPret }
+    requirements:
+        _method: POST
+gestion_bibliotheque_enregistrerReserver:
+    path: /AgentPret/ListePret/Sortie/Enregistrer/{id}/
+    defaults: { _controller: GestionBibliothequeBundle:Pret:EnregistrerReserver }
+gestion_bibliotheque_listereservation:
+    path: /AgentPret/ListeReservation
+    defaults: { _controller: GestionBibliothequeBundle:Pret:listeReservation }
+gestion_bibliotheque_listePretRetour:
+    path: /AgentPret/ListePret/Retour/Livre
+    defaults: { _controller: GestionBibliothequeBundle:Pret:FormulaireRetourLivre }
+gestion_bibliotheque_consulterListePretRetour:
+    path: /AgentPret/ListePret/Retour/Consulter/Livre
+    defaults: { _controller: GestionBibliothequeBundle:Pret:consulterListePret }
+gestion_bibliotheque_supprimerEmprunt:
+    path: /AgentPret/ListePret/Retour/Supprimer/Emprunt
+    defaults: { _controller: GestionBibliothequeBundle:Pret:SupprimerEmprunt }
+gestion_bibliotheque_listerHorsDélais:
+    path: /AgentPret/ListePret/HorsDelais
+    defaults: {_controller: GestionBibliothequeBundle:Pret:ListerHorsDelais }
+###########################Fin routing Minh Anh NGUYEN ##########################
+###############################routing Hussam ####################################
+gestion_bibliotheque_magasinier:                                        #Code + MinhAnhNGUYEN 31/05/2015
+    pattern: /magasinier
+    defaults: { _controller: GestionBibliothequeBundle:Magasinier:index }
+#exemplaire
+gestion_exemplaire_lister:
+  pattern: /exemplaire/
+  defaults: { _controller: GestionBibliothequeBundle:Exemplaire:lister }
+gestion_exemplaire_ajouter:
+  pattern: /exemplaire/ajouter
+  defaults: { _controller: GestionBibliothequeBundle:Exemplaire:editer }
+gestion_exemplaire_modifier:
+  pattern: /exemplaire/modifier/{id}
+  defaults: { _controller: GestionBibliothequeBundle:Exemplaire:editer }
+gestion_exemplaire_supprimer:
+  pattern: /exemplaire/supprimer/{id}
+  defaults: { _controller: GestionBibliothequeBundle:Exemplaire:supprimer }
+#rayon
+gestion_rayon_lister:
+  pattern: /rayon/
+  defaults: { _controller: GestionBibliothequeBundle:Rayon:lister }
+gestion_rayon_ajouter:
+  pattern: /rayon/ajouter
+  defaults: { _controller: GestionBibliothequeBundle:Rayon:ajouter }
+gestion_rayon_vide_supprimer:
+  pattern: /rayon/supprimer/{id}
+  defaults: {_controller: GestionBibliothequeBundle:Rayon:supprimer}
+#etagere
+gestion_etagere_lister:
+  pattern: /etagere/
+  defaults: { _controller: GestionBibliothequeBundle:Etagere:lister }
+gestion_etagere_ajouter:
+  pattern: /etagere/ajouter
+  defaults: { _controller: GestionBibliothequeBundle:Etagere:ajouter }
+gestion_etagere_vide_supprimer:
+  pattern: /etagere/supprimer/{id}
+  defaults: {_controller: GestionBibliothequeBundle:Etagere:supprimer}
+#livre
+gestion_livre_rayon_lister:
+  pattern: /livre/rayon
+  defaults: { _controller: GestionBibliothequeBundle:Livre:listerRayon }
+gestion_livre_etagere_lister:
+  pattern: /livre/etagere
+  defaults: { _controller: GestionBibliothequeBundle:Exemplaire:listerEtagere }
+###########################Fin routing Hussam ##########################
+###############################routing Adnane ####################################
+gestion_bibliotheque_inscrit:                                        #Code + MinhAnhNGUYEN 31/05/2015
+    pattern: /inscrit
+    defaults: { _controller: GestionBibliothequeBundle:Inscrit:index }
+###########################Fin routing Adnande ##########################
+########################## routing Azzedine ##########################
+gestion_bibliotheque_conservateur:
+    pattern : /conservateur
+    defaults: { _controller: GestionBibliothequeBundle:Conservateur:index }

@@ -1,0 +1,32 @@
+{# {% extends '::base.html.twig' %} #}
+{% extends "GestionBibliothequeBundle::magasinierIndex.html.twig" %}
+{% block contenu %}
+
+    <legend>Liste des étagères</legend>
+
+    <div>
+    <table class="table table bordered table striped table-condensed">
+        <tr>
+            <th>Numéro étagère</th>
+            {# <th>Code</th> #}
+        </tr>
+        {% for e in etageres %}
+
+            <tr>
+                <td>{{ e.numeroEtagere }}</td>
+                <td><a class="link" href="{{ path('gestion_etagere_vide_supprimer', { 'id': e.id }) }}" onclick="return confirm('Voulez vous vraiment supprimer l etagere vide : {{ e.numeroEtagere }} ?')">Supprimer</a></td>
+
+            </tr>
+        {% else %}
+            <tr><td>Aucune étagère n'a été trouvé.</td></tr>
+        {% endfor %}
+    </table>
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+
+        <div class="alert alert-success"> {{ flashMessage }} </div>
+
+    {% endfor %}
+
+    <p><a href="{{ path('gestion_etagere_ajouter') }}">Ajouter une étagère</a><p>
+{% endblock %}

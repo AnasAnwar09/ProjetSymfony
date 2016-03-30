@@ -1,0 +1,54 @@
+{% block contenu %}
+
+    <table class="table table bordered table striped">
+        <tr>
+            <th>Nom emprunteur</th>
+            <th>Prénom emprunteur</th>
+            <th>Livre emprunté</th>
+            <th>Exemplaire emprunté</th>
+            <th>Date sortie</th>
+            <th>Date retour</th>
+            <th>Action</th>
+        </tr>
+        {% for emprunter in emprunterPL %}
+            <tr>
+                <td>{{ emprunter.emprunteur.nomLecteur }}</td>
+                <td>{{ emprunter.emprunteur.prenomLecteur }}</td>
+                <td>{{ emprunter.exemplaire.livre.titreLivre }}</td>
+                <td>{{ emprunter.exemplaire.numeroExemplaire }}</td>
+                <td>{{ emprunter.dateDebut|date("d/m/Y") }}</td>
+                <td>{{ emprunter.dateFin|date("d/m/Y") }}</td>
+                <td><input type="button" class="retour" id="{{ emprunter.id }}" value="Retour" ></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div id="result">
+
+    </div>
+
+    <script>
+
+        $(document).ready( function() {
+            $('.retour').click(function(){
+
+                var motcle = $('.retour').attr('id');
+                //console.log(motcle);
+                var DATA = 'motcle=' + motcle;
+                $.ajax({
+                    type: "POST",
+                    url: "{{ path('gestion_bibliotheque_supprimerEmprunt')}}",
+                    data: DATA,
+                    cache: false,
+                    success: function (data) {
+                        $('#result').html(data);
+                        //$(".loading").hide();
+                    }
+                });
+                return false;
+            });
+        });
+
+    </script>
+
+
+{% endblock %}

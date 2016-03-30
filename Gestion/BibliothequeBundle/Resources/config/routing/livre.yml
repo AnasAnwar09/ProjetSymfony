@@ -1,0 +1,34 @@
+livre:
+    path:     /
+    defaults: { _controller: "GestionBibliothequeBundle:Livre:index" }
+
+livre_show:
+    path:     /{id}/show
+    defaults: { _controller: "GestionBibliothequeBundle:Livre:show" }
+
+livre_new:
+    path:     /new
+    defaults: { _controller: "GestionBibliothequeBundle:Livre:new" }
+
+livre_create:
+    path:     /create
+    defaults: { _controller: "GestionBibliothequeBundle:Livre:create" }
+    requirements: { _method: post }
+
+livre_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "GestionBibliothequeBundle:Livre:edit" }
+
+livre_update:
+    path:     /{id}/update
+    defaults: { _controller: "GestionBibliothequeBundle:Livre:update" }
+    requirements: { _method: post|put }
+
+livre_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "GestionBibliothequeBundle:Livre:delete" }
+    requirements: { _method: post|delete }
+
+recherchermot:
+    path:     /reche
+    defaults: { _controller: "GestionBibliothequeBundle:Livre:rechercher" }

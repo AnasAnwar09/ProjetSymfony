@@ -1,0 +1,30 @@
+faculte:
+    path:     /list
+    defaults: { _controller: "GestionBibliothequeBundle:Faculte:index" }
+
+faculte_show:
+    path:     /{id}/show
+    defaults: { _controller: "GestionBibliothequeBundle:Faculte:show" }
+
+faculte_new:
+    path:     /new
+    defaults: { _controller: "GestionBibliothequeBundle:Faculte:new" }
+
+faculte_create:
+    path:     /create
+    defaults: { _controller: "GestionBibliothequeBundle:Faculte:create" }
+    methods:  POST
+
+faculte_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "GestionBibliothequeBundle:Faculte:edit" }
+
+faculte_update:
+    path:     /{id}/update
+    defaults: { _controller: "GestionBibliothequeBundle:Faculte:update" }
+    methods:  [POST, PUT]
+
+faculte_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "GestionBibliothequeBundle:Faculte:delete" }
+    methods:  [POST, DELETE]

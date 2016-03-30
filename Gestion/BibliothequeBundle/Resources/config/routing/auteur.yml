@@ -1,0 +1,30 @@
+auteur:
+    path:     /list
+    defaults: { _controller: "GestionBibliothequeBundle:Auteur:index" }
+
+auteur_show:
+    path:     /{id}/show
+    defaults: { _controller: "GestionBibliothequeBundle:Auteur:show" }
+
+auteur_new:
+    path:     /new
+    defaults: { _controller: "GestionBibliothequeBundle:Auteur:new" }
+
+auteur_create:
+    path:     /create
+    defaults: { _controller: "GestionBibliothequeBundle:Auteur:create" }
+    requirements: { _method: post }
+
+auteur_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "GestionBibliothequeBundle:Auteur:edit" }
+
+auteur_update:
+    path:     /{id}/update
+    defaults: { _controller: "GestionBibliothequeBundle:Auteur:update" }
+    requirements: { _method: post|put }
+
+auteur_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "GestionBibliothequeBundle:Auteur:delete" }
+    requirements: { _method: post|delete }

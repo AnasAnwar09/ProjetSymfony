@@ -1,0 +1,49 @@
+{% extends "GestionBibliothequeBundle::magasinierIndex.html.twig" %}
+{#}%  form_theme form 'bootstrap_3_layout.html.twig' %#}
+{# {%  form_theme form 'bootstrap_3_horizontal_layout.html.twig' %} #}
+{%  block contenu %}
+    <div class="well">
+        <legend>Ajouter un rayon</legend>
+
+        {% if message %}
+        <p>{{ message }}</p>
+        {% endif %}
+
+        {{ form_start(form, {'attr':{'class': 'form-horizontal'}}) }}
+        {# Les erreurs générales du formulaire. #}
+        {{ form_errors(form) }}
+
+        <div class="form-group">
+            {# Génération du label. #}
+            {{ form_label(form.designationRayon, "Désignation Rayon", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.designationRayon) }}
+
+            <div class="col-sm-4">
+                {# Génération de l'input. #}
+                {{ form_widget(form.designationRayon, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+        </div>
+        <div class="form-group">
+            {# Génération du label. #}
+            {{ form_label(form.theme_rayon, "Thème du rayon", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.theme_rayon) }}
+
+            <div class="col-sm-4">
+                {# Génération de l'input. #}
+                {{ form_widget(form.theme_rayon, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <input type="submit" class="btn btn-default" />
+
+        </div>
+        {{ form_end(form) }}
+        <p><a href="{{ path('gestion_rayon_lister') }}">Retour à la liste des rayons</a></p>
+    </div>
+{% endblock %}
+
+
+

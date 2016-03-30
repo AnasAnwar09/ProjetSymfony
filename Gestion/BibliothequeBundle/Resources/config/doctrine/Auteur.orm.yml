@@ -1,0 +1,25 @@
+Gestion\BibliothequeBundle\Entity\Auteur:
+    type: entity
+    table: null
+    repositoryClass: Gestion\BibliothequeBundle\Entity\AuteurRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nomAuteur:
+            type: string
+            length: '20'
+            column: nom_auteur
+        prenomAuteur:
+            type: string
+            length: '50'
+            column: prenom_auteur
+    manyToMany:
+        livres_ecrits:
+            targetEntity: Livre
+            mappedBy: auteur
+            orphanRemoval: true
+    lifecycleCallbacks: {  }

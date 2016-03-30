@@ -1,0 +1,62 @@
+{% extends "GestionBibliothequeBundle::conservateurIndex.html.twig" %}
+{% block contenu %}
+<div>
+    <table class="table table bordered table striped">
+        <legend>Liste des livres: </legend>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Notice</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('livre_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.titreLivre }}</td>
+                <td>{{ entity.noticeLivre }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('livre_show', { 'id': entity.id }) }}">Afficher</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('livre_edit', { 'id': entity.id }) }}">Editer</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+
+        <div class="alert alert-success">
+            {{ flashMessage }}
+        </div>
+
+    {% endfor %}
+        <ul>
+        <li>
+            <a href="{{ path('livre_new') }}">
+                Créer un nouveau livre
+            </a>
+        </li>
+    </ul>
+    </div>
+    <div class="well">
+        <legend>Formulaire de recherche</legend>
+        <form method="POST" action="{{path('recherchermot')}}">
+            <p>Recherche par nom de l'auteur</p>
+            <p><input type="text" name="motrecherche" /> </p>
+            <p>ou Recherche par livre</p>
+            <p><input type="text" name="motrecherche1" /> </p>
+            <p>ou  Recherche par thème</p>
+            <p><input type="text" name="motrecherche2" /> </p>
+            <input type="submit" value="Rechercher" />
+        </form>
+    </div>
+    {% endblock %}

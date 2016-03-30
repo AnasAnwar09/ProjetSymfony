@@ -1,0 +1,153 @@
+{% extends "GestionBibliothequeBundle:AgentPret:index.html.twig" %}
+{% block contenu %}
+
+    <table class="table table bordered table striped">
+        <tr>
+            <th>Nom emprunteur</th>
+            <th>Prénom emprunteur</th>
+            <th>Livre emprunté</th>
+            <th>Exemplaire emprunté</th>
+            <th>Date sortie</th>
+            <th>Date retour</th>
+        </tr>
+    {% for emprunt in emprunter %}
+        <tr>
+            <td>{{ emprunt.emprunteur.nomLecteur }}</td>
+            <td>{{ emprunt.emprunteur.prenomLecteur }}</td>
+            <td>{{ emprunt.exemplaire.livre.titreLivre }}</td>
+            <td>{{ emprunt.exemplaire.numeroExemplaire }}</td>
+            <td>{{ emprunt.dateDebut|date("d/m/Y") }}</td>
+            <td>{{ emprunt.dateFin|date("d/m/Y") }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    <div class="well">
+        <div class="form-group">
+            <div class="input-group">
+                <span >
+                    <input id ="lecteurRad"type="radio" name="classer">
+                </span>
+                Lister par lecteur
+            </div>
+            <div class="input-group">
+                <span >
+                    <input id = "livreRad" type="radio" name="classer">
+                </span>
+                Lister par livre
+            </div>
+            <div class="input-group">
+                <span >
+                    <input id = "DelaisRad" type="radio" name="classer">
+                </span>
+                Retour Hors Délais
+            </div>
+        </div>
+
+
+    </div>
+    <div id="formulaire">
+        <form id="formulaireLecteur-ajax" method="post" action="{{ path('gestion_bibliotheque_trierparlecteur')}}">
+
+             <span id="objetLecteur"></span><input id="rechercheLecteur" type="text">
+            <input id="triLecteur" type="submit" name="Rechercher">
+        </form>
+        <form id="formulaireLivre-ajax" method="post" action="{{ path('gestion_bibliotheque_listerparlivre') }}">
+
+            <span id="objetLivre"></span><input id="rechercheLivre" type="text">
+            <input id="triLivre" type="submit" name="Rechercher">
+        </form>
+    </div>
+
+    <div id="resultatLecteur">
+        {% if emprunterPL is defined %}
+            {% include 'GestionBibliothequeBundle:AgentPret:listePretParLecteur.html.twig' with {'emprunterPL': emprunterPL} %}
+        {% endif %}
+    </div>
+    <div id="resultatLivre">
+        {% if listeExemplaire is defined %}
+            {% include 'GestionBibliothequeBundle:AgentPret:listePretParLivre.html.twig' with {'listeExempalire': listeExemplaire} %}
+        {% endif %}
+    </div>
+    <div id ="resultatHorsDelais">
+        {% if emprunterHD is defined %}
+            {% include 'GestionBibliothequeBundle:AgentPret:listePretHorsDelais.html.twig' with {'emprunterHD': emprunterHD} %}
+        {% endif %}
+    </div>
+
+    <script>
+
+        $(document).ready( function() {
+            $('#formulaireLecteur-ajax').hide();
+            $('#formulaireLivre-ajax').hide();
+            $('#lecteurRad').click(function(){
+                $('#formulaireLecteur-ajax').show();
+                $('#objetLecteur').html('');
+                $('#objetLecteur').html("Entrer le nom du lecteur");
+                $('#formulaireLivre-ajax').hide();
+            });
+
+            $('#livreRad').click(function(){
+                $('#formulaireLivre-ajax').show();
+                $('#objetLivre').html('');
+                $('#objetLivre').html("Entrer le nom du livre");
+                $('#formulaireLecteur-ajax').hide();
+            });
+
+            $("#formulaireLecteur-ajax").submit(function(){
+                //$(".loading").show();
+                var motcle = $("#rechercheLecteur").val();
+                var DATA = 'motcle=' + motcle;
+                $.ajax({
+                        type: "POST",
+                        url: "{{ path('gestion_bibliotheque_trierparlecteur')}}",
+                        data: DATA,
+                        cache: false,
+                        success: function (data) {
+                            $('#resultatLecteur').html(data);
+                            //$(".loading").hide();
+                        }
+                });
+                    return false;
+            });
+            $("#formulaireLivre-ajax").submit(function(){
+                //$(".loading").show();
+                var motcle = $("#rechercheLivre").val();
+                var DATA = 'motcle=' + motcle;
+                $.ajax({
+                    type: "POST",
+                    url: "{{ path('gestion_bibliotheque_listerparlivre')}}",
+                    data: DATA,
+                    cache: false,
+                    success: function (data) {
+                        $('#resultatLivre').html(data);
+                        //$(".loading").hide();
+                    }
+                });
+                return false;
+            });
+            $('#DelaisRad').click(function(){
+                $.ajax({
+                    type: "POST",
+                    url: "{{ path('gestion_bibliotheque_listerHorsDélais')}}",
+                    cache: false,
+                    success: function (data) {
+                        $('#resultatHorsDelais').html(data);
+                        //$(".loading").hide();
+                    }
+                });
+                return false;
+            });
+
+
+        });
+    </script>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+
+        <div class="alert alert-success">
+            {{ flashMessage }}
+        </div>
+
+    {% endfor %}
+
+
+{% endblock %}

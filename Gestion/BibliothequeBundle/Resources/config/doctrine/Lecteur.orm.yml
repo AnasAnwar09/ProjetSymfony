@@ -1,0 +1,38 @@
+Gestion\BibliothequeBundle\Entity\Lecteur:
+    type: entity
+    table: null
+    repositoryClass: Gestion\BibliothequeBundle\Entity\LecteurRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nomLecteur:
+            type: string
+            length: '20'
+            column: nom_lecteur
+        prenomLecteur:
+            type: string
+            length: '50'
+            column: prenom_lecteur
+        cycleLecteur:
+            type: integer
+            column: cycle_lecteur
+    oneToMany:
+        reserver:
+            targetEntity: Reserver
+            mappedBy: lecteur
+            cascade: [ persist ]
+            orphanRemoval: true
+        emprunter:
+            targetEntity: Emprunter
+            mappedBy: emprunteur
+            cascade : [ persist ]
+            orphanRemoval: true
+    manyToOne:
+        faculte:
+            targetEntity: Faculte
+            inversedBy: etudiants
+            cascade: [ persist ]

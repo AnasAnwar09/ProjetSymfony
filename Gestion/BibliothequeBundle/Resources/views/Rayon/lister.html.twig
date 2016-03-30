@@ -1,0 +1,30 @@
+{# {% extends '::base.html.twig' %} #}
+{% extends "GestionBibliothequeBundle::magasinierIndex.html.twig" %}
+{% block contenu %}
+    <div>
+    <legend>Liste des rayons</legend>
+    <table class="table table bordered table striped">
+        <tr>
+            <th>Désignation rayon</th>
+            {# <th>Code</th> #}
+        </tr>
+        {% for r in rayons %}
+            <tr>
+                <td>{{ r.designationRayon }}</td>
+                {# <td>{{ e.code }}</td> #}
+                <td><a class="link" href="{{ path('gestion_rayon_vide_supprimer', { 'id': r.id }) }}" onclick="return confirm('Voulez vous vraiment supprimer le rayon vide : {{ r.designationRayon }} ?')">Supprimer</a></td>
+            </tr>
+        {% else %}
+            <tr><td>Aucun rayon n'a été trouvé.</td></tr>
+        {% endfor %}
+    </table>
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+
+        <div class="alert alert-success"> {{ flashMessage }} </div>
+
+    {% endfor %}
+
+    <p><a href="{{ path('gestion_rayon_ajouter') }}">Ajouter un rayon</a><p>
+    </div>
+{% endblock %}

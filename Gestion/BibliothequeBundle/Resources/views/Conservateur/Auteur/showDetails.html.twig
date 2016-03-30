@@ -1,0 +1,45 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Liste des auteurs</h1>
+
+    <table class="record_properties">
+        <tbody>
+                <ul>
+                    <li>
+                        <a>Auteur:</a>
+                        <a>{{ entity.nomAuteur }}</a>
+                    </li></br>
+                    {% for livre in livres %}
+                        <ul>
+                            <li>
+                                <a>Livre :</a>
+                                <a>{{ livre.titreLivre }}</a>
+                            </li>
+                             <ul> {% if livre.getThemeLivre %}
+                                <li>
+
+                                        <a >thème :</a>
+                                        <a>{{ livre.getThemeLivre }}</a>
+
+                                </li></br> {% endif %}
+                            </ul>
+                        </ul>
+                    {% endfor %}
+                </ul>
+
+
+
+
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('auteur') }}">
+            Back to the list
+        </a>
+    </li>
+
+</ul>
+{% endblock %}

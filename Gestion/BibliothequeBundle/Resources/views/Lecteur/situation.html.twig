@@ -1,0 +1,45 @@
+{% extends "GestionBibliothequeBundle::inscritIndex.html.twig" %}
+{% block contenu %}
+<div>
+    <legend>Situation du lecteur</legend>
+
+    <table class="table table bordered table striped">
+        <tbody>
+            <tr>
+                <th>Nom Lecteur</th>
+                <td>{{ lecteur.nomLecteur }}</td>
+            </tr>
+            <tr>
+                <th>Prénom Lecteur</th>
+                <td>{{ lecteur.prenomLecteur }}</td>
+            </tr>
+            <tr>
+                <th>Livre(s) prêté(s)</th>
+            {% for emprunt in emprunter %}
+                <td>{{ emprunt.exemplaire }}</td>
+            {% endfor %}
+            </tr>
+            <tr>
+                <th>Livre(s) reservé(s)</th>
+            {% for reservation in reserver %}
+                <td>{{ reservation.livre.titreLivre }}</td>
+            {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('lecteur') }}">
+            Retourner à la liste des lecteurs
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('lecteur_edit', { 'id': lecteur.id }) }}">
+            Modifier
+        </a>
+    </li>
+   
+</ul>
+</div>
+{% endblock %}

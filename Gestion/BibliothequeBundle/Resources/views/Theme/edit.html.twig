@@ -1,0 +1,48 @@
+{% extends "GestionBibliothequeBundle::conservateurIndex.html.twig" %}
+{% block contenu %}
+<div class="well">
+    <legend>Edition de thème :</legend>
+    {{ form_start(edit_form, {'attr':{'class': 'form-horizontal'}}) }}
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(edit_form) }}
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(edit_form.descriptionTheme, "Nom Lecteur", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(edit_form.descriptionTheme) }}
+
+        <div class="col-sm-4">
+            {# Génération de l'input. #}
+            {{ form_widget(edit_form.descriptionTheme, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+    </div>
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(edit_form.livre_theme, "Prenom Lecteur", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(edit_form.livre_theme) }}
+
+        <div class="col-sm-4">
+            {# Génération de l'input. #}
+            {{ form_widget(edit_form.livre_theme, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <input type="submit" class="btn btn-default" />
+
+    </div>
+
+    {{ form_end(edit_form) }}
+</div>
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('theme') }}">
+            Retour à la liste des thèmes
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+
+{% endblock %}

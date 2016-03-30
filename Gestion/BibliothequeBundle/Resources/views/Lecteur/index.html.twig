@@ -1,0 +1,52 @@
+{% extends "GestionBibliothequeBundle::inscritIndex.html.twig" %}
+{% block contenu %}
+    <div>
+        <legend>Liste des lecteurs</legend>
+        <table class="table table bordered table striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom Lecteur</th>
+                <th>Prénom Lecteur</th>
+                <th>Cycle Lecteur</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('lecteur_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.nomLecteur }}</td>
+                <td>{{ entity.prenomLecteur }}</td>
+                <td>{{ entity.cycleLecteur }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('lecteur_show', { 'id': entity.id }) }}">Détails</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('lecteur_edit', { 'id': entity.id }) }}">Modifier</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+
+    <div class="alert alert-success">
+        {{ flashMessage }}
+    </div>
+
+    {% endfor %}
+        <ul>
+        <li>
+            <a href="{{ path('lecteur_new') }}">
+                Créer un nouveau lecteur
+            </a>
+        </li>
+    </ul>
+    </div>
+    {% endblock %}

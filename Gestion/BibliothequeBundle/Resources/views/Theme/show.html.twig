@@ -1,0 +1,32 @@
+{% extends "GestionBibliothequeBundle::conservateurIndex.html.twig" %}
+{% block contenu %}
+<div>
+    <table class="table table bordered table striped">
+        <legend>Thème</legend>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ entity.descriptionTheme }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('theme') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('theme_edit', { 'id': entity.id }) }}">
+            Editer Thème
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+Gestion\BibliothequeBundle\Entity\Theme:
+    type: entity
+    table: null
+    repositoryClass: Gestion\BibliothequeBundle\Entity\ThemeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        descriptionTheme:
+            type: string
+            length: 255
+            column: description_theme
+    oneToMany:
+        rayon:
+            targetEntity: Rayon
+            mappedBy: theme_rayon
+            orphanRemoval: true
+    manyToMany:
+        livre_theme:
+            targetEntity: Livre
+            mappedBy: livre
+            orphanRemoval: true
+    lifecycleCallbacks: {  }

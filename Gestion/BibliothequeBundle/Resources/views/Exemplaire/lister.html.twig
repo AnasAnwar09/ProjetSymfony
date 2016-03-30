@@ -1,0 +1,32 @@
+{% extends "GestionBibliothequeBundle::magasinierIndex.html.twig" %}
+{%  block contenu %}
+<style type="text/css">
+    .link {
+        color: crimson;
+    }
+</style>
+
+    <div>
+    <legend>Liste des exemplaires</legend>
+    <table  class="table table bordered table striped">
+        <tr>
+            <th>Numéro exemplaires</th>
+            {# <th>Code</th> #}
+        </tr>
+        {% for e in exemplaires %}
+
+            <tr>
+                <td>{{ e.numeroExemplaire }}</td>
+                {# <td>{{ e.code }}</td> #}
+                <td><a href="{{ path('gestion_exemplaire_modifier', { 'id': e.id }) }}">Modifier</a></td>
+                <td><a class="link" href="{{ path('gestion_exemplaire_supprimer', { 'id': e.id }) }}" onclick="return confirm('Voulez vous vraiment supprimer l exemplaire : {{ e.numeroExemplaire }} ?')">Supprimer</a></td>
+            </tr>
+        {% else %}
+            <tr><td>Aucun exemplaire n'a été trouvé.</td></tr>
+        {% endfor %}
+    </table>
+    <p><a href="{{ path('gestion_exemplaire_ajouter') }}">Ajouter un exemplaire</a><p>
+    </div>
+
+
+{% endblock %}

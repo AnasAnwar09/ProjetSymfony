@@ -1,0 +1,75 @@
+{% extends "GestionBibliothequeBundle::inscritIndex.html.twig" %}
+{% block contenu %}
+<div class="well">
+    <legend>Ajouter un lecteur</legend>
+
+    {{ form_start(form, {'attr':{'class': 'form-horizontal'}}) }}
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.nomLecteur, "Nom Lecteur", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(form.nomLecteur) }}
+
+        <div class="col-sm-4">
+            {# Génération de l'input. #}
+            {{ form_widget(form.nomLecteur, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+    </div>
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.prenomLecteur, "Prenom Lecteur", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(form.prenomLecteur) }}
+
+        <div class="col-sm-4">
+            {# Génération de l'input. #}
+            {{ form_widget(form.prenomLecteur, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+
+    </div>
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.cycleLecteur, "Cycle Lecteur", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(form.cycleLecteur) }}
+
+        <div class="col-sm-4">
+            {# Génération de l'input. #}
+            {{ form_widget(form.cycleLecteur, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+    </div>
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.faculte, "Faculté", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(form.faculte) }}
+
+        <div class="col-sm-4">
+            {# Génération de l'input. #}
+            {{ form_widget(form.faculte, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <input type="submit" class="btn btn-default" />
+
+    </div>
+    {{ form_end(form) }}
+
+    </div>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('lecteur') }}">
+            Retourner à la liste des lecteurs
+        </a>
+    </li>
+</ul>
+{% endblock %}

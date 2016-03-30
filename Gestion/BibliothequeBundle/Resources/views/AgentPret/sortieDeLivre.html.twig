@@ -1,0 +1,64 @@
+{% extends "GestionBibliothequeBundle:AgentPret:index.html.twig" %}
+
+{% block contenu %}
+     <div class="well">
+        {{ form_start(form, {'attr':{'id':'verifDispo','class': 'form-horizontal'}}) }}
+        {# Les erreurs générales du formulaire. #}
+        {{ form_errors(form) }}
+
+        <div class="form-group">
+            {# Génération du label. #}
+            {{ form_label(form.TitreLivre, "Titre du livre", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.TitreLivre) }}
+
+            <div class="col-sm-4">
+                {# Génération de l'input. #}
+                {{ form_widget(form.TitreLivre, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            {{ form_widget(form.submit, {'attr': {'class': 'btn btn-default'}}) }}
+        </div>
+
+        {{ form_end(form) }}
+     </div>
+
+
+    <div id="result">
+        {% if formPret is defined %}
+            {% include 'GestionBibliothequeBundle:AgentPret:enregistrementPret.html.twig' with {'form': formPret} %}
+        {% endif %}
+        {% if formReserver is defined %}
+            {% include 'GestionBibliothequeBundle:AgentPret:enregistrementReserver.html.twig' with {'form': formReserver} %}
+        {% endif %}
+    </div>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+
+        <div class="alert alert-danger">
+            {{ flashMessage }}
+        </div>
+
+    {% endfor %}
+    <script>
+
+        $(document).ready( function() {
+            $("#verifDispo").submit(function(){
+                //$(".loading").show();
+                //var choice = $("#Gestion_BibliothequeBundlelivrertype_TitreLivre").selectedIndex;
+                var motcle = $("#Gestion_BibliothequeBundlelivrertype_TitreLivre option:selected").text();
+                var DATA = 'motcle=' + motcle;
+                $.ajax({
+                    type: "POST",
+                    url: "{{ path('gestion_bibliotheque_consulterDispo')}}",
+                    data: DATA,
+                    cache: false,
+                    success: function (data) {
+                        $('#result').html(data);
+                        //$(".loading").hide();
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+{% endblock %}

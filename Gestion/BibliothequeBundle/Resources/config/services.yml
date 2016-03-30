@@ -1,0 +1,4 @@
+services:
+#    gestion_bibliotheque.example:
+#        class: Gestion\BibliothequeBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,25 @@
+Gestion\BibliothequeBundle\Entity\Etagere:
+    type: entity
+    table: null
+    repositoryClass: Gestion\BibliothequeBundle\Entity\EtagereRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        numeroEtagere:
+            type: integer
+            column: numero_etagere
+    oneToMany:
+        exemplaires_ranges:
+            targetEntity: Exemplaire
+            mappedBy: etagere
+            orphanRemoval: true
+    manyToOne:
+        rayon:
+            targetEntity: Rayon
+            inversedBy: etageres
+            cascade: [ persist ]
+

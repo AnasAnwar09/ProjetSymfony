@@ -1,0 +1,30 @@
+{% extends "GestionBibliothequeBundle:AgentPret:index.html.twig" %}
+{% block contenu %}
+
+    <table class="table table bordered table striped">
+        <tr>
+            <th>Nom emprunteur</th>
+            <th>Prénom emprunteur</th>
+            <th>Livre réservé</th>
+            <th>Date réservation</th>
+        </tr>
+        {% for reserv in reserver %}
+            <tr>
+                <td>{{ reserv.lecteur.nomLecteur }}</td>
+                <td>{{ reserv.lecteur.prenomLecteur }}</td>
+                <td>{{ reserv.livre.titreLivre }}</td>
+                <td>{{ reserv.dateReservation|date("d/m/Y") }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+
+        <div class="alert alert-success">
+            {{ flashMessage }}
+        </div>
+
+    {% endfor %}
+
+
+{% endblock %}

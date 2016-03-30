@@ -1,0 +1,21 @@
+Gestion\BibliothequeBundle\Entity\Archivage:
+    type: entity
+    table: null
+    repositoryClass: Gestion\BibliothequeBundle\Entity\ArchivageRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        idLecteur:
+            type: integer
+            column: id_lecteur
+        idExemplaire:
+            type: integer
+            column: id_exemplaire
+        dateRetour:
+            type: datetime
+            column: date_retour
+    lifecycleCallbacks: {  }

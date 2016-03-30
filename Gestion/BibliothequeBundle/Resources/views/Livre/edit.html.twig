@@ -1,0 +1,76 @@
+{% extends "GestionBibliothequeBundle::ConservateurIndex.html.twig" %}
+{% block contenu %}
+<div class="well">
+    <legend>Modifier un livre</legend>
+
+    {{ form_start(edit_form, {'attr':{'class': 'form-horizontal'}}) }}
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(edit_form) }}
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(edit_form.titreLivre, "Nom Lecteur", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(edit_form.titreLivre) }}
+
+        <div class="col-sm-4">
+            {# Génération de l'input. #}
+            {{ form_widget(edit_form.titreLivre, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+    </div>
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(edit_form.noticeLivre, "Prenom Lecteur", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(edit_form.noticeLivre) }}
+
+        <div class="col-sm-4">
+            {# Génération de l'input. #}
+            {{ form_widget(edit_form.noticeLivre, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+
+    </div>
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(edit_form.auteur, "Cycle Lecteur", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(edit_form.auteur) }}
+
+        <div class="col-sm-4">
+            {# Génération de l'input. #}
+            {{ form_widget(edit_form.auteur, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+    </div>
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(edit_form.theme_livre, "Faculté", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(edit_form.theme_livre) }}
+
+        <div class="col-sm-4">
+            {# Génération de l'input. #}
+            {{ form_widget(edit_form.theme_livre, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <input type="submit" class="btn btn-default" />
+
+    </div>
+    {{ form_end(edit_form) }}
+
+</div>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('livre') }}">
+            Retour à la liste des livres
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

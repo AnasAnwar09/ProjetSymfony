@@ -1,0 +1,39 @@
+Gestion\BibliothequeBundle\Entity\Livre:
+    type: entity
+    table: null
+    repositoryClass: Gestion\BibliothequeBundle\Entity\LivreRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        titreLivre:
+            type: string
+            length: '50'
+            column: titre_livre
+        noticeLivre:
+            type: string
+            length: 255
+            column: notice_livre
+    manyToMany:
+        auteur:
+            targetEntity: Auteur
+            inversedBy: livres_ecrits
+            cascade: [ persist ]
+        theme_livre:
+            targetEntity: Theme
+            inversedBy: livre_theme
+            cascade:  [ persist ]
+    oneToMany:
+        exemplaires:
+            targetEntity: Exemplaire
+            mappedBy: livre
+            orphanRemoval: true
+        reserver:
+            targetEntity: Reserver
+            mappedBy: livre
+            cascade: [ persist ]
+            orphanRemoval: true
+

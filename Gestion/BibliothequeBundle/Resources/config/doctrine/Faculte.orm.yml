@@ -1,0 +1,21 @@
+Gestion\BibliothequeBundle\Entity\Faculte:
+    type: entity
+    table: null
+    repositoryClass: Gestion\BibliothequeBundle\Entity\FaculteRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        designationFaculte:
+            type: string
+            length: 255
+            column: designation_faculte
+    oneToMany:
+        etudiants:
+            targetEntity: Lecteur
+            mappedBy: faculte
+            orphanRemoval: true
+

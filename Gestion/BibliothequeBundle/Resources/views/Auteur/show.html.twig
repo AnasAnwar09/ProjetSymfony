@@ -1,0 +1,35 @@
+{% extends "GestionBibliothequeBundle::conservateurIndex.html.twig" %}
+{% block contenu %}
+    <legend>Auteur</legend>
+
+    <table class="table table bordered table striped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ entity.nomAuteur }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ entity.prenomAuteur }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('auteur') }}">
+            Retour à la liste d'auteurs
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('auteur_edit', { 'id': entity.id }) }}">
+            Editer
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

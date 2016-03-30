@@ -1,0 +1,30 @@
+Gestion\BibliothequeBundle\Entity\Reserver:
+    type: entity
+    table: null
+    repositoryClass: Gestion\BibliothequeBundle\Entity\ReserverRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        dateReservation:
+            type: datetime
+            column: date_reservation
+    manyToOne:
+        livre:
+            targetEntity: Livre
+            inversedBy: reserver
+            joinColumn:
+                name : id_livre
+                referencedColumnName: id
+                nullable: FALSE
+        lecteur:
+            targetEntity: Lecteur
+            inversedBy: reserver
+            joinColumn:
+                name: id_lecteur
+                referencedColumnNam: id
+                nullable: FALSE
+    lifecycleCallbacks: {  }

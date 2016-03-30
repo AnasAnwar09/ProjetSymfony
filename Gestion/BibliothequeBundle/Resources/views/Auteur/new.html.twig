@@ -1,0 +1,61 @@
+{% extends "GestionBibliothequeBundle::conservateurIndex.html.twig" %}
+{% block contenu %}
+    <div class="well">
+        <legend>Ajouter un nouveau auteur</legend>
+        {{ form_start(form, {'attr':{'class': 'form-horizontal'}}) }}
+        {# Les erreurs générales du formulaire. #}
+        {{ form_errors(form) }}
+
+        <div class="form-group">
+            {# Génération du label. #}
+            {{ form_label(form.nomAuteur, "Nom Auteur", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.nomAuteur) }}
+
+            <div class="col-sm-4">
+                {# Génération de l'input. #}
+                {{ form_widget(form.nomAuteur, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+
+        </div>
+        <div class="form-group">
+            {# Génération du label. #}
+            {{ form_label(form.prenomAuteur, "Prénom Auteur", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.prenomAuteur) }}
+
+            <div class="col-sm-4">
+                {# Génération de l'input. #}
+                {{ form_widget(form.prenomAuteur, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+
+        </div>
+        <div class="form-group">
+            {# Génération du label. #}
+            {{ form_label(form.livres_ecrits, "Livres écrits", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.livres_ecrits) }}
+
+            <div class="col-sm-4">
+                {# Génération de l'input. #}
+                {{ form_widget(form.livres_ecrits, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <input type="submit" class="btn btn-default" />
+
+        </div>
+        {{ form_end(form) }}
+
+    </div>
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('auteur') }}">
+            Retour à la liste d'auteurs
+        </a>
+    </li>
+</ul>
+{% endblock %}

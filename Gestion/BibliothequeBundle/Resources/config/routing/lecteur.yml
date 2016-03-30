@@ -1,0 +1,34 @@
+lecteur:
+    path:     /list
+    defaults: { _controller: "GestionBibliothequeBundle:Lecteur:index" }
+
+lecteur_show:
+    path:     /{id}/show
+    defaults: { _controller: "GestionBibliothequeBundle:Lecteur:show" }
+
+lecteur_new:
+    path:     /new
+    defaults: { _controller: "GestionBibliothequeBundle:Lecteur:new" }
+
+lecteur_create:
+    path:     /create
+    defaults: { _controller: "GestionBibliothequeBundle:Lecteur:create" }
+    requirements: { _method: post }
+
+lecteur_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "GestionBibliothequeBundle:Lecteur:edit" }
+
+lecteur_update:
+    path:     /{id}/update
+    defaults: { _controller: "GestionBibliothequeBundle:Lecteur:update" }
+    requirements: { _method: post|put }
+
+lecteur_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "GestionBibliothequeBundle:Lecteur:delete" }
+    requirements: { _method: post|delete }
+##Config ajouté depuis AdnaneDossier#
+lecteur_rechercher:
+    path:     /{id}/situation
+    defaults: { _controller: "GestionBibliothequeBundle:Lecteur:situation" }

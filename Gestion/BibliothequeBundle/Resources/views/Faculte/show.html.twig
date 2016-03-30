@@ -1,0 +1,33 @@
+{% extends "GestionBibliothequeBundle::inscritIndex.html.twig" %}
+{% block contenu %}
+<div>
+    <legend>Faculté</legend>
+
+    <table class="table table bordered table striped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Désignation de la faculté</th>
+                <td>{{ entity.designationFaculte }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('faculte') }}">
+           Retourner à la liste des facultés
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('faculte_edit', { 'id': entity.id }) }}">
+            Modifier
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+</div>
+{% endblock %}

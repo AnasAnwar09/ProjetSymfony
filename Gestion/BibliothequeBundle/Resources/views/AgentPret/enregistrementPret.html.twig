@@ -1,0 +1,53 @@
+{% block contenu %}
+    <div class="well">
+        {{ form_start(formPret, {'attr':{'id':'enregistrementPret','class': 'form-horizontal'}}) }}
+        {# Les erreurs générales du formulaire. #}
+        {{ form_errors(formPret) }}
+        <div class="form-group">
+            {# Génération du label. #}
+            {{ form_label(formPret.exemplaire, "Exemplaires disponibles", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(formPret.exemplaire) }}
+
+            <div class="col-sm-4">
+                {# Génération de l'input. #}
+                {{ form_widget(formPret.exemplaire, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {# Génération du label. #}
+            {{ form_label(formPret.emprunteur, "Emprunteur", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(formPret.emprunteur) }}
+
+            <div class="col-sm-4">
+                {# Génération de l'input. #}
+                {{ form_widget(formPret.emprunteur, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+        </div>
+        <div class="form-group">
+            {# Génération du label. #}
+            {{ form_label(formPret.dateDebut, "Date début", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+            <div class="col-sm-4">
+                {# Génération de l'input. #}
+                {{ form_widget(formPret.dateDebut, { 'attr': {'class': 'datepicker'}}) }}
+            </div>
+            {{ form_widget(formPret.submit, {'attr': {'class': 'btn btn-default'}}) }}
+
+        </div>
+        {{ form_end(formPret) }}
+    </div>
+    <script>
+        $(document).ready( function() {
+
+            //$('.datepicker').datepicker({ dateFormat: "yyyy-MM-dd" });
+
+        });
+    </script>
+
+    </script>
+{% endblock %}

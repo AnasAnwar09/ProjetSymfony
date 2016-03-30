@@ -1,0 +1,30 @@
+Gestion\BibliothequeBundle\Entity\Exemplaire:
+    type: entity
+    table: null
+    repositoryClass: Gestion\BibliothequeBundle\Entity\ExemplaireRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        numeroExemplaire:
+            type: string
+            length: '30'
+            column: numero_exemplaire
+    manyToOne:
+        livre:
+            targetEntity: Livre
+            inversedBy: exemplaires
+            cascade: [ persist ]
+        etagere:
+            targetEntity: Etagere
+            inversedBy: exemplaires_ranges
+            cascade: [ persist ]
+    oneToMany:
+        emprunter:
+            targetEntity: Emprunter
+            mappedBy: exemplaire
+            cascade: [ persist ]
+            orphanRemoval: true

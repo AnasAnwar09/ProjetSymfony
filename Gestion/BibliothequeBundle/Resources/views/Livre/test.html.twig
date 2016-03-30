@@ -1,0 +1,73 @@
+
+{% extends "GestionBibliothequeBundle::conservateurIndex.html.twig" %}
+{% block contenu %}
+<div>
+    <table class="table table bordered table striped">
+        <legend>Liste des livres</legend>
+        <thead>
+        <tr>
+
+            <th>Titre</th>
+            <th>Notice</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% if listeMots %}
+        {% for listeMot in listeMots %}
+        {% for livre in listeMot.getLivresEcrits %}
+            <tr>
+
+                <td>{{ livre.titreLivre }}</td>
+                <td>{{ livre.noticeLivre }}</td>
+
+            </tr>
+        {% endfor %}
+        {% endfor %}
+        {% endif %}
+
+        {% if listeLivre %}
+            {% for listeLivres in listeLivre %}
+
+                    <tr>
+
+                        <td>{{ listeLivres.titreLivre }}</td>
+                        <td>{{ listeLivres.noticeLivre }}</td>
+
+                    </tr>
+
+            {% endfor %}
+        {% endif %}
+
+        {% if listeLivreParTheme %}
+            {% for listeLivreParThemes in listeLivreParTheme %}
+                {% for livres in listeLivreParThemes.getLivreTheme %}
+                    <tr>
+
+                        <td>{{ livres.titreLivre }}</td>
+                        <td>{{ livres.noticeLivre }}</td>
+
+                    </tr>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+
+        </tbody>
+    </table>
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+
+        <div class="alert alert-success">
+            {{ flashMessage }}
+        </div>
+
+    {% endfor %}
+    <ul>
+        <li>
+            <a href="{{ path('livre') }}">
+                Retour à la liste des livres
+            </a>
+        </li>
+    </ul>
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% block body %}
+
+    <h1>Liste des livres par rayon</h1>
+
+    <div>
+    <table>
+        <tr>
+            <th>Titre livre (num exeplaire)</th>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        {% for e in exemplaires %}
+
+            <tr align="center">
+                <td>{{ e.numeroExemplaire }}</td>
+            </tr>
+        {% else %}
+            <tr><td>Aucun livre n'a été trouvé.</td></tr>
+        {% endfor %}
+    </table>
+{% endblock %}

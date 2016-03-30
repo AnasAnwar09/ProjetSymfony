@@ -1,0 +1,30 @@
+emprunter:
+    path:     /
+    defaults: { _controller: "GestionBibliothequeBundle:Emprunter:index" }
+
+emprunter_show:
+    path:     /{id}/show
+    defaults: { _controller: "GestionBibliothequeBundle:Emprunter:show" }
+
+emprunter_new:
+    path:     /new
+    defaults: { _controller: "GestionBibliothequeBundle:Emprunter:new" }
+
+emprunter_create:
+    path:     /create
+    defaults: { _controller: "GestionBibliothequeBundle:Emprunter:create" }
+    requirements: { _method: post }
+
+emprunter_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "GestionBibliothequeBundle:Emprunter:edit" }
+
+emprunter_update:
+    path:     /{id}/update
+    defaults: { _controller: "GestionBibliothequeBundle:Emprunter:update" }
+    requirements: { _method: post|put }
+
+emprunter_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "GestionBibliothequeBundle:Emprunter:delete" }
+    requirements: { _method: post|delete }
